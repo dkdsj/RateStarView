@@ -83,8 +83,8 @@
     /** 分数 */
     NSInteger score = sender.tag-10+1;
     
-    if ([self.delegate respondsToSelector:@selector(rateStarViewScore:)]) {
-        [self.delegate rateStarViewScore:score];
+    if ([self.delegate respondsToSelector:@selector(rateStarView:score:)]) {
+        [self.delegate rateStarView:self score:score];
     }
 }
 
@@ -122,7 +122,7 @@
     p.x = scoreF * self.frame.size.width;
     
     NSInteger score = (int)((scoreF*10.0)/(10.0/_rateNum))+1;
-    NSLog(@"score %zd %f p.x:%f", score, scoreF, p.x);
+//    NSLog(@"score %zd %f p.x:%f", score, scoreF, p.x);
     
     
     /** btn */
@@ -136,8 +136,8 @@
     
     
     /** 分数 */
-    if ([self.delegate respondsToSelector:@selector(rateStarViewScore:)]) {
-        [self.delegate rateStarViewScore:score];
+    if ([self.delegate respondsToSelector:@selector(rateStarView:score:)]) {
+        [self.delegate rateStarView:self score:score];
     }
 }
 

@@ -10,10 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class RateStarView;
 @protocol RateStarViewDelegate <NSObject>
 
 @optional
-- (void)rateStarViewScore:(NSInteger)score;
+- (void)rateStarView:(RateStarView *)rateView score:(NSInteger)score;
 
 @end
 

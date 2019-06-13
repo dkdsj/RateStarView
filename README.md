@@ -2,7 +2,7 @@
 订单评价星星🌟🌟
 
 ### gif
-![Image text](../rate.gif)
+![Image text](https://github.com/dkdsj/RateStarView/blob/master/rate.gif)
 
 
 #### 定义
@@ -23,11 +23,22 @@
 
 #### 使用
 ~~~ 
-    RateStarView *v = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20];
-    [self.view addSubview:v];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    v.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:.2];
-    v.delegate = self;
+    _vRate1 = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20];
+    [self.view addSubview:_vRate1];
+    _vRate1.delegate = self;
+    _vRate1.tag = 111;
+    _vRate1.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:.2];
+    
+    _vRate2 = [[RateStarView alloc] initWithNum:10 space:5 width:20 height:20];
+    [self.view addSubview:_vRate2];
+    _vRate2.delegate = self;
+    _vRate2.tag = 222;
+    _vRate2.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.2];
+    
+    
     
     /** ;; */
     UIView *vpp = [UIView new];
@@ -50,17 +61,24 @@
         make.height.mas_equalTo(30);
     }];
     
-    [v mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_vRate1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(vpp);
         make.left.equalTo(vpp.mas_right).offset(20);
-        make.width.mas_equalTo(v.rateWidth);
-        make.height.mas_equalTo(v.rateHeight);
+        make.width.mas_equalTo(self.vRate1.rateWidth);
+        make.height.mas_equalTo(self.vRate1.rateHeight);
     }];
     
     [vqq mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(v);
-        make.left.equalTo(v.mas_right).offset(20);
+        make.centerY.equalTo(self.vRate1);
+        make.left.equalTo(self.vRate1.mas_right).offset(20);
         make.width.height.mas_equalTo(vpp);
+    }];
+    
+    [_vRate2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.vRate1);
+        make.top.equalTo(self.vRate1.mas_bottom).offset(20);
+        make.width.mas_equalTo(self.vRate2.rateWidth);
+        make.height.mas_equalTo(self.vRate2.rateHeight);
     }];
 ~~~
 

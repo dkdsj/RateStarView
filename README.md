@@ -1,8 +1,9 @@
 # RateStarView
 订单评价星星🌟🌟
 
+### gif
+![Image text](../rate.gif)
 
-### 使用
 
 #### 定义
 
@@ -20,7 +21,8 @@
                      height:(CGFloat)height;
 ~~~        
 
-~~~
+#### 使用
+~~~ 
     RateStarView *v = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20];
     [self.view addSubview:v];
     
@@ -38,7 +40,7 @@
     vqq.backgroundColor = [UIColor blueColor];
 ~~~
     
-    
+#### 布局
 ~~~
     /** mas */
     [vpp mas_makeConstraints:^(MASConstraintMaker *make) {

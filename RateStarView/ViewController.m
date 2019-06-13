@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    RateStarView *v = [[RateStarView alloc] initWithNum:33 space:5 width:20 height:20];
+    RateStarView *v = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20];
     [self.view addSubview:v];
     
     v.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:.2];

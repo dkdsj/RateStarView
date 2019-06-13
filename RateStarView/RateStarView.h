@@ -19,12 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RateStarView : UIView
 
-
+/** 返回view的高宽 由内部计算 */
 @property (nonatomic, assign, readonly) CGFloat rateWidth;
 @property (nonatomic, assign, readonly) CGFloat rateHeight;
 
 /**
- @param num 5星
+ @param num 星星数量
  @param space 星星间距
  @param width 1个星星宽度
  @param height 1个星星高度

@@ -22,13 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _vRate1 = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20];
+    _vRate1 = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20 canTouchMove:YES];
     [self.view addSubview:_vRate1];
     _vRate1.delegate = self;
     _vRate1.tag = 111;
     _vRate1.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:.2];
     
-    _vRate2 = [[RateStarView alloc] initWithNum:10 space:5 width:20 height:20];
+    _vRate2 = [[RateStarView alloc] initWithNum:10 space:5 width:20 height:20 canTouchMove:NO];
     [self.view addSubview:_vRate2];
     _vRate2.delegate = self;
     _vRate2.tag = 222;

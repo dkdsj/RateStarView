@@ -18,6 +18,11 @@
 @property (nonatomic, assign, readwrite) CGFloat rateWidth;
 @property (nonatomic, assign, readwrite) CGFloat rateHeight;
 
+
+/** YES:可以拖动修改 NO:只能点击 */
+@property (nonatomic, assign) BOOL isSupportTouchMove;
+
+
 @end
 
 @implementation RateStarView
@@ -25,11 +30,14 @@
 - (instancetype)initWithNum:(NSInteger)num
                         space:(CGFloat)space
                         width:(CGFloat)width
-                       height:(CGFloat)height {
+                       height:(CGFloat)height
+               canTouchMove:(BOOL)canTouchMove {
     
     self = [super init];
     if (self) {
-        [self initViewWithNum:num space:space width:width height:height];
+        _isSupportTouchMove = canTouchMove;
+        
+        [self initViewWithNum:num space:space width:width height:height canTouchMove:canTouchMove];
     }
     return self;
 }
@@ -37,13 +45,14 @@
 - (void)initViewWithNum:(NSInteger)num
                   space:(CGFloat)space
                   width:(CGFloat)width
-                 height:(CGFloat)height {
+                 height:(CGFloat)height
+           canTouchMove:(BOOL)canTouchMove {
     
     for (int i = 0; i < num; i++) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(i*space+i*width, 0, width, height);
-        btn.userInteractionEnabled = NO;
+        btn.userInteractionEnabled = !canTouchMove;
         btn.tag = 10+i;
         
         [btn setBackgroundImage:[UIImage imageNamed:kUnSelectImageName] forState:UIControlStateNormal];
@@ -68,7 +77,7 @@
 
 #pragma mark - Action
 
-/** 暂时用触摸  btn点击关闭先 */
+/** btn点击 */
 - (void)handleButtonEvent:(UIButton *)sender {
 
     for (UIButton *btn in self.subviews) {
@@ -91,6 +100,11 @@
 #pragma mark - Touche Event
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if (!_isSupportTouchMove) {
+        return;
+    }
+    
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
     CGRect rect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
@@ -100,6 +114,11 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    if (!_isSupportTouchMove) {
+        return;
+    }
+    
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
     [UIView animateWithDuration:0.2 animations:^{

@@ -13,12 +13,13 @@
  @param space 星星间距
  @param width 1个星星宽度
  @param height 1个星星高度
- @return ;
+ @canTouchMove 是否可以触摸修改星星数量
  */
 - (instancetype)initWithNum:(NSInteger)num
                       space:(CGFloat)space
                       width:(CGFloat)width
-                     height:(CGFloat)height;
+                     height:(CGFloat)height
+               canTouchMove:(BOOL)canTouchMove;
 ~~~        
 
 #### 使用
@@ -26,13 +27,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _vRate1 = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20];
+    _vRate1 = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20 canTouchMove:YES];
     [self.view addSubview:_vRate1];
     _vRate1.delegate = self;
     _vRate1.tag = 111;
     _vRate1.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:.2];
     
-    _vRate2 = [[RateStarView alloc] initWithNum:10 space:5 width:20 height:20];
+    _vRate2 = [[RateStarView alloc] initWithNum:10 space:5 width:20 height:20 canTouchMove:NO];
     [self.view addSubview:_vRate2];
     _vRate2.delegate = self;
     _vRate2.tag = 222;

@@ -34,6 +34,7 @@
     _vRate2.tag = 222;
     _vRate2.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.2];
     
+      
     
     
     /** ;; */

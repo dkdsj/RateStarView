@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) CGFloat rateWidth;
 @property (nonatomic, assign, readonly) CGFloat rateHeight;
 
+@property (nonatomic, assign) NSInteger score;
+@property (nonatomic, assign) BOOL enableTouch;
 
 /**
  @param num 星星数量

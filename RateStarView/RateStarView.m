@@ -71,8 +71,27 @@
 }
 
 
-- (CGSize)systemLayoutSizeFittingSize:(CGSize)targetSize {
-    return CGSizeMake(100, 40);
+- (void)setScore:(NSInteger)score {
+    for (UIButton *btn in self.subviews) {
+        if (btn.tag-9<=score) {
+            [btn setBackgroundImage:[UIImage imageNamed:kSelectImageName] forState:UIControlStateNormal];
+        } else {
+            [btn setBackgroundImage:[UIImage imageNamed:kUnSelectImageName] forState:UIControlStateNormal];
+        }
+    }
+}
+
+
+- (void)setEnableTouch:(BOOL)enableTouch {
+    _enableTouch = enableTouch;
+    
+    for (UIButton *btn in self.subviews) {
+        if (!enableTouch) {
+            btn.userInteractionEnabled = NO;
+        } else {
+            btn.userInteractionEnabled = !_isSupportTouchMove;
+        }
+    }
 }
 
 #pragma mark - Action

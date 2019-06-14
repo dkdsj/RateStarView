@@ -22,13 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _vRate1 = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20 canTouchMove:YES];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"禁止交互" style:UIBarButtonItemStylePlain target:self action:@selector(handleRightBBI:)];
+    
+    _vRate1 = [[RateStarView alloc] initWithNum:12 space:5 width:20 height:20 canTouchMove:NO];
     [self.view addSubview:_vRate1];
     _vRate1.delegate = self;
     _vRate1.tag = 111;
     _vRate1.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:.2];
+    _vRate1.enableTouch = YES;
     
-    _vRate2 = [[RateStarView alloc] initWithNum:10 space:5 width:20 height:20 canTouchMove:NO];
+    _vRate2 = [[RateStarView alloc] initWithNum:10 space:5 width:20 height:20 canTouchMove:YES];
     [self.view addSubview:_vRate2];
     _vRate2.delegate = self;
     _vRate2.tag = 222;
@@ -75,6 +78,22 @@
         make.width.mas_equalTo(self.vRate2.rateWidth);
         make.height.mas_equalTo(self.vRate2.rateHeight);
     }];
+}
+
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    _vRate1.score = arc4random_uniform(10);
+//}
+
+#pragma mark - Action
+
+- (void)handleRightBBI:(UIBarButtonItem *)bbi {
+    _vRate1.enableTouch = !_vRate1.enableTouch;
+    
+    if ([bbi.title isEqualToString:@"禁止交互"]) {
+        bbi.title = @"打开交互";
+    } else {
+        bbi.title = @"禁止交互";
+    }
 }
 
 #pragma mark - RateStarViewDelegate

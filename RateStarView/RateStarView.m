@@ -162,6 +162,8 @@
     NSInteger score = (int)((scoreF*10.0)/(10.0/_rateNum))+1;
 //    NSLog(@"score %zd %f p.x:%f", score, scoreF, p.x);
     
+    /** 防止超越 */
+    score = MIN(score, _rateNum);
     
     /** btn */
     for (UIButton *btn in self.subviews) {
